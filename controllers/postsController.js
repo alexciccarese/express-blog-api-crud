@@ -28,7 +28,16 @@ function modify(req, res) {
 }
 
 function destroy(req, res) {
-  res.send(`Delete the post with an id of ${req.params.id}`)
+  const postId = Number(req.params.id)
+
+  const post = menu.find(post => post.id === postId)
+  console.log(post);
+
+  //rimuoviamo il singolo id dall'arrey
+  menu.splice(menu.indexOf(post), 1)
+  console.log(menu);
+
+  res.sendStatus(204)
 }
 
 module.exports = {
