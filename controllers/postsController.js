@@ -1,7 +1,7 @@
 const menu = require('../data/menu')
 
 function index(req, res) {
-  res.json(posts)
+  res.json(menu)
 }
 
 function show(req, res) {

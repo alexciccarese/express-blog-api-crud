@@ -1,30 +1,21 @@
 const express = require('express')
 const router = express.Router()
 const posts = require('../data/menu')
+const postsController = require('../controllers/postsController')
 
 //index
-router.get('/', (req, res) => {
-  res.json(posts)
-})
+router.get('/', postsController.index)
 
 //store
-router.post('/:id', (req, res) => {
-  res.send(`Return post with id: ${postId}`)
-} )
+router.post('/:id', postsController.show)
 
 //ceate
-router.post('/', (req, res) => {
-  res.send('Store a new post')
-} )
+router.post('/', postsController.store)
 
 //update
-router.put('/:id', (req, res) => {
-  res.send(`Update the post with an id of ${req.params.id}`)
-})
+router.put('/:id', postsController.update)
 
 //delete
-router.delete('/:id', (req, res) => {
-  res.send(`Delete the post with an id of ${req.params.id}`)
-})
+router.delete('/:id', postsController.destroy)
 
 module.exports = router
