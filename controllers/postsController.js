@@ -5,7 +5,14 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  res.send(`Return post with id: ${postId}`)
+  const postId = Number(req.params.id)
+
+    //troviamo il post tramite ID
+    const post = menu.find(post => post.id === postId)
+    console.log(post);
+    
+  
+    res.json(post)
 }
 
 function store(req, res) {

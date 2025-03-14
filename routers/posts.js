@@ -7,7 +7,7 @@ const postsController = require('../controllers/postsController')
 router.get('/', postsController.index)
 
 //store
-router.post('/:id', postsController.show)
+router.get('/:id', postsController.show)
 
 //ceate
 router.post('/', postsController.store)
