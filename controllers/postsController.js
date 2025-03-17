@@ -38,7 +38,25 @@ function store(req, res) {
 }
 
 function update(req, res) {
-  res.send(`Update the post with an id of ${req.params.id}`)
+  const postSlug = req.params.slug.toLowerCase()
+  const post = menu.find(post => post.slug === postSlug)
+
+  //404 error
+  if(!post) {
+    return res.status(404).json({
+      error: '404 not found',
+      message: 'Post not found'
+    })
+  }
+
+  //aggiorniamo il post
+  post.title = req.body.title
+  post.content = req.body.content
+  post.image = req.body.image
+  post.tags = req.body.tags
+
+  //check the menu
+  res.json(post)
 }
 
 function modify(req, res) {
