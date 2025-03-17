@@ -7,15 +7,15 @@ const postsController = require('../controllers/postsController')
 router.get('/', postsController.index)
 
 //store
-router.get('/:id', postsController.show)
+router.get('/:slug', postsController.show)
 
 //ceate
 router.post('/', postsController.store)
 
 //update
-router.put('/:id', postsController.update)
+router.put('/:slug', postsController.update)
 
 //delete
-router.delete('/:id', postsController.destroy)
+router.delete('/:slug', postsController.destroy)
 
 module.exports = router
