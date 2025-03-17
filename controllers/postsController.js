@@ -7,16 +7,34 @@ function index(req, res) {
 function show(req, res) {
   const postSlug = req.params.slug
 
-    //troviamo il post tramite ID
-    const post = menu.find(post => post.slug === postSlug)
-    console.log(post);
-    
-  
-    res.json(post)
+  //troviamo il post tramite slug
+  const post = menu.find(post => post.slug === postSlug)
+  console.log(post);
+
+
+  res.json(post)
 }
 
 function store(req, res) {
-  res.send('Store a new post')
+  const newSlug = req.body.title.toLowerCase()
+
+  const newPost = {
+    title: req.body.title,
+    slug: newSlug,
+    content: req.body.content,
+    image: req.body.image,
+    tags: req.body.tags
+  }
+
+  //aggiungiamo il nuovo post al menu
+  menu.push(newPost)
+
+  console.log(menu);
+
+  res.status(201)
+  res.json(newPost)
+  
+
 }
 
 function update(req, res) {
