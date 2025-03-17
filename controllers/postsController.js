@@ -5,10 +5,10 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  const postId = Number(req.params.id)
+  const postSlug = req.params.slug
 
     //troviamo il post tramite ID
-    const post = menu.find(post => post.id === postId)
+    const post = menu.find(post => post.slug === postSlug)
     console.log(post);
     
   
