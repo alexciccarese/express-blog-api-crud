@@ -3,6 +3,7 @@ const app = express()
 const port = 3003
 const postsRouter = require('./routers/posts')
 const serverError = require('./middleware/serverError')
+const notFound = require('./middleware/error_404')
 
 //rgistro il body-parsr pr "application/jason"
 app.use(express.json())
@@ -31,3 +32,6 @@ app.use(serverError)
 app.get('/', (req, res) => {
   throw new Error('Server Error')
 })
+
+//error 404
+app.use(notFound)
