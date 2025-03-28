@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require("cors");
 const app = express()
 const port = 3003
 const postsRouter = require('./routers/posts')
@@ -7,6 +8,9 @@ const notFound = require('./middleware/error_404')
 
 //rgistro il body-parsr pr "application/jason"
 app.use(express.json())
+
+//cors
+app.use(cors({origin: 'http://localhost:5173'}));
 
 app.post("/", (req, res) => {
   //dentro req.body troveremo
