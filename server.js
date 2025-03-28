@@ -9,6 +9,9 @@ const notFound = require('./middleware/error_404')
 //rgistro il body-parsr pr "application/jason"
 app.use(express.json())
 
+// asset statici per le immagini di ogni post
+app.use(express.static('public'))
+
 //cors
 app.use(cors({origin: 'http://localhost:5173'}));
 
